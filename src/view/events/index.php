@@ -16,9 +16,37 @@
         <dt>description</dt><dd><pre><?php echo $event['description'];?></pre></dd>
       </dl>
     </article> -->
+    <article class="eerst_volgende_box">
+      <header >
+        <h1><?php echo $event['title'] ?></h1>
+      </header>
+      <p>
+        <?php
+          $eventStart = strtotime($event['start']);
+          echo date("d M Y", $eventStart)
+        ?>
+      </p>
+      <p>
+        <?php
+        $eventEnd = strtotime($event['end']);
+        echo date("H.i", $eventStart) . " - " . date("H.i", $eventEnd);
+        ?>
+      </p>
+      <p>
+        <?php
+          foreach($event['locations'] as $location): echo $location['name'];
+        endforeach?>
+      </p>
+      <p>
+        <?php
+          foreach($event['tags'] as $tag): echo $tag['tag'];
+        endforeach?>
+      </p>
+    </article>
+    <br>
     <?php
     $i++;
-    if ($i === 2) {
+    if ($i === 5) {
       break;
     }
      ?>
