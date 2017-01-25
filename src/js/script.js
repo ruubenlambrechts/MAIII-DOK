@@ -1,6 +1,6 @@
 const init = () => {
 
-  console.log(`Hello, MA3_DOK`)
+  console.log(`Hello, MA3_DOK`);
 
 };
 
