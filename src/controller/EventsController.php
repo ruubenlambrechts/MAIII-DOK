@@ -96,4 +96,22 @@ class EventsController extends Controller {
     $this->set('events', $events);
   }
 
+  public function agenda() {
+    $conditions = array();
+
+    $events = $this->eventDAO->search($conditions);
+    $this->set('events', $events);
+  }
+
+  public function detail() {
+    $conditions = array();
+
+    $events = $this->eventDAO->search($conditions);
+
+    $id = $_GET['id'];
+    $event = $this->eventDAO->selectById($id);
+
+    $this->set('event', $event);
+    $this->set('events', $events);
+  }
 }

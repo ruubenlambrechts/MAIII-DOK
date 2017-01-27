@@ -12,6 +12,8 @@ class EventDAO extends DAO {
       LEFT OUTER JOIN `ma3_dok_locations` ON ma3_dok_locations.id = ma3_dok_events_locations.location_id
       LEFT OUTER JOIN `ma3_dok_events_tags` ON ma3_dok_events.id = ma3_dok_events_tags.event_id
       LEFT OUTER JOIN `ma3_dok_tags` ON ma3_dok_tags.id = ma3_dok_events_tags.tag_id
+      LEFT OUTER JOIN `ma3_dok_events_media` ON ma3_dok_events.id = ma3_dok_events_media.event_id
+      LEFT OUTER JOIN `ma3_dok_media` ON ma3_dok_media.id = ma3_dok_events_media.media_id
       WHERE 1
     ";
     $conditionSqls = array();
@@ -36,6 +38,10 @@ class EventDAO extends DAO {
         $columnName = 'ma3_dok_tags.id';
       } else if($columnName == 'tag') {
         $columnName = 'ma3_dok_tags.tag';
+      } else if($columnName == 'media_id') {
+        $columnName = 'ma3_dok_media.id';
+      } else if($columnName == 'media') {
+        $columnName = 'ma3_dok_media.media1';
       }
       //handle functions
       if(!empty($condition['function'])) {
@@ -62,6 +68,7 @@ class EventDAO extends DAO {
     $eventIds = $this->_getEventIdsFromResult($result);
     $tagsByEventId = $this->_getTagsForEventIds($eventIds);
     $locationsByEventId = $this->_getLocationsForEventIds($eventIds);
+    $mediaByEventId = $this->_getMediaForEventIds($eventIds);
     //handle the tags & locations in the foreach loop - we want to see all tags for a given event
     foreach($result as &$row) {
       $row['tags'] = array();
@@ -71,6 +78,10 @@ class EventDAO extends DAO {
       $row['locations'] = array();
       if(!empty($locationsByEventId[$row['id']])) {
         $row['locations'] = $locationsByEventId[$row['id']];
+      }
+      $row['media'] = array();
+      if(!empty($mediaByEventId[$row['id']])) {
+        $row['media'] = $mediaByEventId[$row['id']];
       }
     }
     return $result;
@@ -134,6 +145,28 @@ class EventDAO extends DAO {
       $tagsByEventId[$row['event_id']][] = $row;
     }
     return $tagsByEventId;
+  }
+
+  private function _getMediaForEventIds($eventIds) {
+    $mediaByEventId = array();
+    $eventIdsImploded = implode(', ', $eventIds);
+    $sql = "SELECT
+      ma3_dok_media.*,
+      ma3_dok_events_media.event_id
+      FROM `ma3_dok_media`
+      RIGHT OUTER JOIN `ma3_dok_events_media` ON ma3_dok_events_media.media_id = ma3_dok_media.id
+      WHERE ma3_dok_events_media.event_id IN ({$eventIdsImploded})
+    ";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach($result as $row) {
+      if(empty($mediaByEventId[$row['event_id']])) {
+        $mediaByEventId[$row['event_id']] = array();
+      }
+      $mediaByEventId[$row['event_id']][] = $row;
+    }
+    return $mediaByEventId;
   }
 
 }

@@ -8,11 +8,11 @@
   <header class="header">
     <nav class="nav center">
       <a href="index.php" class="nav_logo"><span class="nav_logo_span">DOK</span></a>
-      <a href="index.php?page=agenda">Agenda</a>
-      <a href="index.php?page=404">Info</a>
-      <a href="index.php?page=404">Activiteiten</a>
-      <a href="index.php?page=404">Praktisch</a>
-      <a href="index.php?page=404">Blogs</a>
+      <a href="index.php?page=agenda" class="nav_link">Agenda</a>
+      <a href="index.php?page=404" class="nav_link">Info</a>
+      <a href="index.php?page=404" class="nav_link">Activiteiten</a>
+      <a href="index.php?page=404" class="nav_link">Praktisch</a>
+      <a href="index.php?page=404" class="nav_link">Blogs</a>
     </nav>
     <h1 class="center header_title">Werfplek voor verpozing en creatieve manoeuvres</h1>
     <h2 class="center header_subtitle">Open vanaf 1 mei 2017 tot 25 september 2017</h2>

@@ -1,56 +1,54 @@
-<section>
+<section class="section event_home_box center">
   <header class="title_box">
     <h1 class="title">De eerst volgende evenementen</h1>
   </header>
-  <?php $i = 0;
-  foreach($events as $event): ?>
-    <!-- <article>
-      <header><h2><?php echo $event['title']; ?></h2></header>
-      <dl>
-        <dt>start</dt><dd><?php echo $event['start'];?></dd>
-        <dt>end</dt><dd><?php echo $event['end'];?></dd>
-        <dt>organiser</dt><dd><?php echo $event['organiser'];?></dd>
-        <dt>title</dt><dd><?php echo $event['title'];?></dd>
-        <dt>locations</dt><dd>s<ul><?php foreach($event['locations'] as $location): ?><li><?php echo $location['name'];?></li><?php endforeach;?></ul></dd>
-        <dt>tags</dt><dd><ul><?php foreach($event['tags'] as $tag): ?><li><?php echo $tag['tag'];?></li><?php endforeach;?></ul></dd>
-        <dt>description</dt><dd><pre><?php echo $event['description'];?></pre></dd>
-      </dl>
-    </article> -->
-    <article class="eerst_volgende_box">
-      <header >
-        <h1><?php echo $event['title'] ?></h1>
-      </header>
-      <p>
+  <div class="event_container event_home">
+    <?php $i = 0;
+    foreach($events as $event): ?>
+      <a class="event_box<?php
+        if (count($event['locations']) < 2) {
+        foreach($event['locations'] as $location):
+          echo " event_" . $location['name'];
+        endforeach;
+      }; ?>" href="index.php?page=detail&id=<?php echo $event['id']?>">
+
         <?php
-          $eventStart = strtotime($event['start']);
-          echo date("d M Y", $eventStart)
-        ?>
-      </p>
-      <p>
-        <?php
-        $eventEnd = strtotime($event['end']);
-        echo date("H.i", $eventStart) . " - " . date("H.i", $eventEnd);
-        ?>
-      </p>
-      <p>
-        <?php
-          foreach($event['locations'] as $location): echo $location['name'];
+          foreach($event['media'] as $media): echo $media['media1'];
+          // echo $media['media2'];
+          // echo $media['media3'];
         endforeach?>
-      </p>
-      <p>
-        <?php
-          foreach($event['tags'] as $tag): echo $tag['tag'];
-        endforeach?>
-      </p>
-    </article>
-    <br>
-    <?php
-    $i++;
-    if ($i === 5) {
-      break;
-    }
-     ?>
-  <? endforeach;?>
+        <div class="event_context_box">
+          <header class="event_title"r>
+            <h1><?php echo ucwords(strtolower($event['title'])) ?></h1>
+          </header>
+          <p class="event_date"><?php
+              $eventStart = strtotime($event['start']);
+              echo date("d M Y", $eventStart)
+            ?></p>
+          <p class="event_time"><?php
+            $eventEnd = strtotime($event['end']);
+            echo date("H.i", $eventStart) . " - " . date("H.i", $eventEnd);
+            ?></p>
+        </div>
+        <div class="event_extra">
+          <p class="event_location"><?php
+              foreach($event['locations'] as $location):
+                echo $location['name'] . " ";
+            endforeach?></p>
+          <?php
+              foreach($event['tags'] as $tag):
+                echo '<p class="event_tag">' . $tag['tag'];
+            endforeach?></p>
+        </div>
+      </a>
+      <?php
+      $i++;
+      if ($i === 2) {
+        break;
+      }
+       ?>
+    <? endforeach;?>
+  </div>
 </section>
 <section class="section">
   <header class="title_box">
