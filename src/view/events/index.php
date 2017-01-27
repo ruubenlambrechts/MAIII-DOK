@@ -19,7 +19,7 @@
         endforeach?>
         <div class="event_context_box">
           <header class="event_title"r>
-            <h1><?php echo ucwords(strtolower($event['title'])) ?></h1>
+            <h1><?php echo mb_strtolower($event['title'], 'UTF-8') ?></h1>
           </header>
           <p class="event_date"><?php
               $eventStart = strtotime($event['start']);

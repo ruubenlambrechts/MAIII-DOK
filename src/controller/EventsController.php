@@ -92,6 +92,13 @@ class EventsController extends Controller {
     //   'value' => '2017-05-01 19:00'
     // );
 
+    $conditions = array();
+
+    $conditions[0] = array(
+      'field' => 'start',
+      'comparator' => '>=',
+      'value' => date('Y-m-d 00:00:00')
+    );
     $events = $this->eventDAO->search($conditions);
     $this->set('events', $events);
   }
@@ -99,6 +106,11 @@ class EventsController extends Controller {
   public function agenda() {
     $conditions = array();
 
+    $conditions[0] = array(
+      'field' => 'start',
+      'comparator' => '>=',
+      'value' => date('Y-m-d 00:00:00')
+    );
     $events = $this->eventDAO->search($conditions);
     $this->set('events', $events);
   }
@@ -106,12 +118,13 @@ class EventsController extends Controller {
   public function detail() {
     $conditions = array();
 
+    $conditions[0] = array(
+      'field' => 'id',
+      'comparator' => '=',
+      'value' => $_GET['id'],
+    );
+
     $events = $this->eventDAO->search($conditions);
-
-    $id = $_GET['id'];
-    $event = $this->eventDAO->selectById($id);
-
-    $this->set('event', $event);
     $this->set('events', $events);
   }
 }

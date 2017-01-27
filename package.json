@@ -4,8 +4,9 @@
   "scripts": {
     "development": "npm run clean && mamp ./src & NODE_ENV=development webpack-dev-server",
     "serve": "ws -d ./dist -c -p 3000 ",
-    "clean": "rimraf ./dist",
-    "production": "npm run clean && NODE_ENV=production webpack -p"
+    "clean": "rimraf dist",
+    "copy": "copyfiles -u 1 './src/**/*.*' ./dist",
+    "production": "npm run clean && npm run copy && NODE_ENV=production webpack -p"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

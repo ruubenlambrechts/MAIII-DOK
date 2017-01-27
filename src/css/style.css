@@ -8,7 +8,7 @@
   --purple: #b968ff;
   --deep_purple: #3f31b9;
   --salmon: #f0e0e8;
-  --yellow: #fffbc0;
+  --yellow: #fae633;
 
   --test: {
     justify-content: space-around;
@@ -19,6 +19,8 @@
 
 html {
   background-color: var(--salmon);
+  font-family: Superclarendon;
+  font-weight: lighter;
 }
 
 .center {
@@ -67,7 +69,6 @@ html {
   }
 
   &_subtitle {
-    font-family: Superclarendon;
     color: var(--deep_purple);
     font-size: 2.4rem;
     background-color: var(--green);
@@ -144,7 +145,7 @@ html {
 
   &_container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 
@@ -159,7 +160,7 @@ html {
     height: 27.5rem;
     background: url(../assets/img/next_l.svg) no-repeat;
     position: absolute;
-    left: -22rem;
+    left: -18rem;
     top: 6rem;
   }
 
@@ -170,7 +171,7 @@ html {
     height: 27.5rem;
     background: url(../assets/img/next_r.svg) no-repeat;
     position: absolute;
-    right: -30rem;
+    right: -25rem;
     bottom: -1rem;
     z-index: -1;
   }
@@ -187,7 +188,6 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-family: Superclarendon;
     font-size: 1.4rem;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
@@ -263,10 +263,7 @@ html {
   }
 }
 
-
-
 .zondag_text {
-  font-family: Superclarendon;
   color: var(--salmon);
   font-size: 1.4rem;
   text-align: center;
@@ -292,7 +289,6 @@ html {
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  font-family: Superclarendon;
   font-size: 1.4rem;
   line-height: 2rem;
   position: relative;
@@ -333,12 +329,11 @@ html {
     display: block;
     content: '';
     background-color: var(--blue);
-    width: 20vw;
+    width: 15%;
     height: 2.5rem;
     position: absolute;
     z-index: 1;
     top: 12rem;
-    left: 0;
   }
 }
 
@@ -357,12 +352,24 @@ html {
     display: block;
     content: '';
     background-color: var(--pink);
-    width: 53vw;
+    width: 29%;
     height: 2.5rem;
     position: absolute;
     z-index: 1;
-    top: 5rem;
-    left: 25vw;
+    top: 5.5rem;
+    left: 50%;
+  }
+
+  &_box::after {
+    display: block;
+    content: '';
+    background-color: var(--pink);
+    width: 25%;
+    height: 2.5rem;
+    position: absolute;
+    z-index: 1;
+    top: 5.5rem;
+    right: 50%;
   }
 }
 
@@ -440,7 +447,6 @@ html {
 .home_footer {
   background-color: var(--deep_purple);
   font-size: 1.4rem;
-  font-family: Superclarendon;
   padding: 3rem;
 
   &_buttons {
@@ -482,7 +488,6 @@ html {
 
   &_label {
     font-size: 1.4rem;
-    font-family: Superclarendon;
     color: var(--green);
     margin: 2rem 0;
   }
@@ -518,7 +523,6 @@ input[type='submit'] {
 
   &_button {
     font-size: 1.4rem;
-    font-family: Superclarendon;
     text-decoration: none;
     color: var(--deep_purple);
     background-color: var(--green);
@@ -534,6 +538,174 @@ input[type='submit'] {
     padding: 4rem 0 1.6rem;
     font-family: Bevan;
     font-size: 2.4rem;
+  }
+}
+
+.detail {
+
+  &_box {
+    width: 100%;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &_flex {
+    width: 85%;
+    display: flex;
+    background-color: var(--yellow);
+  }
+
+  &_flex > img {
+    width: 40%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(.5) brightness(1.1);
+    mix-blend-mode: hard-light;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--deep_purple);
+    width: 100%;
+  }
+
+  &_top {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    height: 25%;
+  }
+
+  &_title {
+    font-family: Bevan;
+    font-size: 2.2rem;
+    text-transform: capitalize;
+  }
+
+  &_info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+  }
+
+  &_info::before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: .2rem;
+    background-color: var(--yellow);
+    position: absolute;
+    bottom: 0;
+  }
+
+  &_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 2rem;
+    height: 100%;
+    margin: auto;
+    width: 75%;
+    color: var(--yellow);
+    position: relative;
+  }
+
+  &_description {
+    color: var(--salmon);
+    line-height: 2rem;
+    width: 93%;
+    margin: auto;
+    padding: 3rem 0;
+  }
+
+  &_date {
+    width: 15%;
+    background-color: var(--yellow);
+    font-family: Bevan;
+    font-size: 2.5rem;
+    padding: 2.5rem 0;
+    color: var(--deep_purple);
+  }
+
+  &_social {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2rem;
+  }
+
+  &_DOKBox, &_DOKBox &_info::before, &_DOKBox &_date {
+    background-color: var(--red);
+  }
+
+  &_DOKBox &_header {
+    color: var(--red);
+  }
+
+  &_DOKVoortuin, &_DOKVoortuin &_info::before, &_DOKVoortuin &_date, &_DOKTerras, &_DOKTerras &_info::before, &_DOKTerras &_date {
+    background-color: var(--pink);
+  }
+
+  &_DOKVoortuin &_header, &_DOKTerras &_header {
+    color: var(--pink);
+  }
+
+  &_DOKKantine, &_DOKKantine &_info::before, &_DOKKantine &_date {
+    background-color: var(--blue);
+  }
+
+  &_DOKKantine &_header {
+    color: var(--blue);
+  }
+
+  &_DOKMarkt, &_DOKMarkt &_info::before, &_DOKMarkt &_date {
+    background-color: var(--purple);
+  }
+
+  &_DOKMarkt &_header {
+    color: var(--purple);
+  }
+
+  &_DOKStrand, &_DOKStrand &_info::before, &_DOKStrand &_date {
+    background-color: var(--green);
+  }
+
+  &_DOKStrand &_header {
+    color: var(--green);
+  }
+
+  &_button_box {
+    padding: 3rem 0;
+    background-color: var(--deep_purple);
+  }
+
+  &_button {
+    line-height: 3.5rem;
+  }
+
+  &_media {
+
+    &_box {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &_img_box {
+      width: 30rem;
+      height: 30rem;
+      display: flex;
+      align-items: center;
+      /*clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);*/
+    }
+
+    &_box img {
+      object-fit: cover;
+      width: 100%;
+      border: 2px solid var(--green);
+    }
   }
 }
 

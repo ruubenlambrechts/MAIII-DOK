@@ -30,6 +30,8 @@ class EventDAO extends DAO {
       //special columns?
       if($columnName == 'location_id') {
         $columnName = 'ma3_dok_locations.id';
+      } else if($columnName == 'id') {
+        $columnName = 'ma3_dok_events.id';
       } else if($columnName == 'location') {
         $columnName = 'ma3_dok_locations.name';
       } else if($columnName == 'organiser') {
@@ -57,7 +59,7 @@ class EventDAO extends DAO {
       $i++;
     }
     if(!empty($conditionSqls)) {
-      $sql .= 'AND ' . implode(' AND ', $conditionSqls);
+      $sql .= 'AND ' . implode(' AND ', $conditionSqls) . ' ORDER BY `ma3_dok_events`.`start` ASC';
     }
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute($conditionParams);
