@@ -1,6 +1,5 @@
 const init = () => {
 
-  console.log(`Hello, MA3_DOK`);
   search(`cat`);
 
 };

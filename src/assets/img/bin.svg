@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="30px" viewBox="0 0 21 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Garbage</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="8.17894737" width="21" height="21.0315789" rx="4"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="21" height="21.0315789" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M7.8,2.49473684 C7.8,1.55294601 9.00883118,0.789473684 10.5,0.789473684 C11.9911688,0.789473684 13.2,1.55294601 13.2,2.49473684 L18.4459825,2.49473684 C19.8565274,2.49473684 21,3.63009634 21,5.05263158 C21,6.46531783 19.8560355,7.61052632 18.4459825,7.61052632 L2.55401752,7.61052632 C1.14347259,7.61052632 0,6.47516682 0,5.05263158 C0,3.63994532 1.14396452,2.49473684 2.55401752,2.49473684 L7.8,2.49473684 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="21" height="6.82105263" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Agenda" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Agenda-1280" transform="translate(-1040.000000, -352.000000)" stroke="#000000">
+            <g id="Group-24-Copy" transform="translate(1020.000000, 349.000000)">
+                <g id="Garbage" transform="translate(20.000000, 3.000000)">
+                    <use id="Rectangle-10" mask="url(#mask-2)" stroke-width="2" opacity="0.400022645" xlink:href="#path-1"></use>
+                    <use id="Combined-Shape" mask="url(#mask-4)" stroke-width="2" opacity="0.402117301" xlink:href="#path-3"></use>
+                    <path d="M10.5,11.8736842 L10.5,25.5157895" id="Line" stroke-width="1" stroke-linecap="square" opacity="0.392776268"></path>
+                    <path d="M5.1,11.8736842 L5.1,25.5157895" id="Line-Copy" stroke-width="1" stroke-linecap="square" opacity="0.392776268"></path>
+                    <path d="M15.9,11.8736842 L15.9,25.5157895" id="Line-Copy-2" stroke-width="1" stroke-linecap="square" opacity="0.392776268"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

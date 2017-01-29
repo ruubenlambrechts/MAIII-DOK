@@ -52,6 +52,11 @@ html {
   font-weight: lighter;
 }
 
+input[type='submit']:focus {
+  border: none;
+  outline: none;
+}
+
 .container {
   overflow: hidden;
 }
@@ -578,18 +583,34 @@ html {
   &_months {
     @apply(--space_around);
     width: 100%;
+    height: 100%;
     background: linear-gradient(to bottom, color(black a(0)) 40%, var(--green) 40%, var(--green) 60%, color(black a(0)) 60%, color(black a(0)) 100%);
+    text-transform: capitalize;
   }
 
   &_form_months_box {
-    width: 60%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 
-  &_months_box {
-    @apply(--space_around);
+  &_form_months_box input[type='submit'] {
+    @apply(--bevan);
+    color: var(--deep_purple);
+    background-color: var(--green);
+    border: none;
+    padding: .5rem 1rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    cursor: pointer;
   }
 
-  &_reset {
+  &_form_months_box input[type='submit']:hover {
+    background-color: var(--red);
+  }
+
+  &_reset_months {
     @apply(--bevan);
     text-decoration: none;
     font-size: 2rem;
@@ -598,15 +619,53 @@ html {
     padding: 1rem;
   }
 
-  &_reset:hover {
+  &_reset_months:hover {
     background-color: var(--red);
   }
 
-  &_form_tag_box {
+  &_tags {
+    @apply(--space_around);
+    width: 100%;
+    height: 100%;
+    text-transform: capitalize;
+  }
+
+  &_form_tags_box {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    margin: auto;
+    flex-wrap: wrap;
+    width: 65%;
+  }
+
+  &_form_tags_box input[type='submit'] {
+    font-family: Superclarendon;
+    color: #919191;
+    background-color: #cbcbcb;
+    border: none;
+    padding: .6rem 1rem;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+
+  &_form_tags_box input[type='submit']:hover {
+    background-color: #919191;
+    color: #cbcbcb;
+  }
+
+  &_reset_tags {
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: 0 1rem;
+    background: url(../assets/img/bin.svg) no-repeat center center, var(--red);
+    width: 6rem;
+    height: 3.5rem;
+  }
+
+  &_reset_tags span {
+    display: none;
   }
 }
 
