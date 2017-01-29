@@ -12,6 +12,7 @@ const extractCSS = new ExtractTextWebpackPlugin(`css/style.css`);
 
 // change for production build on different server path
 const publicPath = `/`;
+// /ruuben.lambrechts/20162017/ma3/dok/
 
 const port = 3000;
 

@@ -1,3 +1,22 @@
+<section class="section agenda_months">
+  <nav class="agenda_months_nav">
+    <a href="index.php?page=agenda">Toon alles</a>
+    <a href="index.php?page=agenda&month=mei">Mei</a>
+    <a href="index.php?page=agenda&month=juni">Juni</a>
+    <a href="index.php?page=agenda&month=juli">Juli</a>
+    <a href="index.php?page=agenda&month=augustus">Augustus</a>
+    <a href="index.php?page=agenda&month=september">September</a>
+  </nav>
+</section>
+<section>
+  <form class="agenda_form_box" action="index.php?page=agenda" method="get">
+    <label for="moestuin">Moestuin</label>
+    <input name="page" value="agenda" hidden>
+    <input type="checkbox" name="tag" value="moestuin" id="moestuin">
+    <input type="submit">
+  </form>
+</section>
+
 <section class="section">
   <header class="title_box">
     <h1 class="title">De eerst volgende evenementen</h1>

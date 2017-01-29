@@ -104,6 +104,7 @@ class EventsController extends Controller {
   }
 
   public function agenda() {
+    $start = '2017-05-01';
     $conditions = array();
 
     $conditions[0] = array(
@@ -111,6 +112,71 @@ class EventsController extends Controller {
       'comparator' => '>=',
       'value' => date('Y-m-d 00:00:00')
     );
+
+    if (isset($_GET['month'])) {
+      if ($_GET['month'] == 'mei') {
+        $conditions[1] = array(
+          'field' => 'start',
+          'comparator' => '>=',
+          'value' => date("Y-m-d H:i:s", strtotime("$start")),
+        );
+
+        $conditions[2] = array(
+          'field' => 'start',
+          'comparator' => '<=',
+          'value' => date("Y-m-31 H:i:s", strtotime("$start")),
+        );
+      } else if ($_GET['month'] == 'juni') {
+        $conditions[1] = array(
+          'field' => 'start',
+          'comparator' => '>=',
+          'value' => date("Y-m-d H:i:s", strtotime("$start +1 month")),
+        );
+
+        $conditions[2] = array(
+          'field' => 'start',
+          'comparator' => '<=',
+          'value' => date("Y-m-31 H:i:s", strtotime("$start +1 month")),
+        );
+      } else if ($_GET['month'] == 'juli') {
+        $conditions[1] = array(
+          'field' => 'start',
+          'comparator' => '>=',
+          'value' => date("Y-m-d H:i:s", strtotime("$start +2 months")),
+        );
+
+        $conditions[2] = array(
+          'field' => 'start',
+          'comparator' => '<=',
+          'value' => date("Y-m-31 H:i:s", strtotime("$start +2 months")),
+        );
+      } else if ($_GET['month'] == 'augustus') {
+        $conditions[1] = array(
+          'field' => 'start',
+          'comparator' => '>=',
+          'value' => date("Y-m-d H:i:s", strtotime("$start +3 months")),
+        );
+
+        $conditions[2] = array(
+          'field' => 'start',
+          'comparator' => '<=',
+          'value' => date("Y-m-31 H:i:s", strtotime("$start +3 months")),
+        );
+      } else if ($_GET['month'] == 'september') {
+        $conditions[1] = array(
+          'field' => 'start',
+          'comparator' => '>=',
+          'value' => date("Y-m-d H:i:s", strtotime("$start +4 months")),
+        );
+
+        $conditions[2] = array(
+          'field' => 'start',
+          'comparator' => '<=',
+          'value' => date("Y-m-31 H:i:s", strtotime("$start +4 months")),
+        );
+      }
+    }
+
     $events = $this->eventDAO->search($conditions);
     $this->set('events', $events);
   }
@@ -118,13 +184,17 @@ class EventsController extends Controller {
   public function detail() {
     $conditions = array();
 
-    $conditions[0] = array(
-      'field' => 'id',
-      'comparator' => '=',
-      'value' => $_GET['id'],
-    );
+    // $conditions[0] = array(
+    //   'field' => 'id',
+    //   'comparator' => '=',
+    //   'value' => $_GET['id'],
+    // );
 
     $events = $this->eventDAO->search($conditions);
     $this->set('events', $events);
+  }
+
+  public function error() {
+
   }
 }

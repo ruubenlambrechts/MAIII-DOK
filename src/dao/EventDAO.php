@@ -28,18 +28,16 @@ class EventDAO extends DAO {
       $comparator = DAO::getSanitizedComparator($condition['comparator']);
       $columnName = DAO::getSanitizedColumnName($condition['field']);
       //special columns?
+      if($columnName == 'tag_id' || $columnName == 'tag') {
+        //skip tags
+        continue;
+      }
       if($columnName == 'location_id') {
         $columnName = 'ma3_dok_locations.id';
-      } else if($columnName == 'id') {
-        $columnName = 'ma3_dok_events.id';
       } else if($columnName == 'location') {
         $columnName = 'ma3_dok_locations.name';
       } else if($columnName == 'organiser') {
         $columnName = 'ma3_dok_organisers.name';
-      } else if($columnName == 'tag_id') {
-        $columnName = 'ma3_dok_tags.id';
-      } else if($columnName == 'tag') {
-        $columnName = 'ma3_dok_tags.tag';
       } else if($columnName == 'media_id') {
         $columnName = 'ma3_dok_media.id';
       } else if($columnName == 'media') {
@@ -72,7 +70,9 @@ class EventDAO extends DAO {
     $locationsByEventId = $this->_getLocationsForEventIds($eventIds);
     $mediaByEventId = $this->_getMediaForEventIds($eventIds);
     //handle the tags & locations in the foreach loop - we want to see all tags for a given event
+    $return = array();
     foreach($result as &$row) {
+      $skipRow = false;
       $row['tags'] = array();
       if(!empty($tagsByEventId[$row['id']])) {
         $row['tags'] = $tagsByEventId[$row['id']];
@@ -85,8 +85,26 @@ class EventDAO extends DAO {
       if(!empty($mediaByEventId[$row['id']])) {
         $row['media'] = $mediaByEventId[$row['id']];
       }
+      //tag filtering - check conditions
+      foreach($conditions as &$condition) {
+        $columnName = DAO::getSanitizedColumnName($condition['field']);
+        if($columnName == 'tag') {
+          //create array with tag names
+          $tagNames = array();
+          foreach($row['tags'] as &$tag) {
+            $tagNames[] = $tag['tag'];
+          }
+          //tag needs to be present in array
+          if(!in_array($condition['value'], $tagNames)) {
+            $skipRow = true;
+          }
+        }
+      }
+      if(!$skipRow) {
+        $return[] = $row;
+      }
     }
-    return $result;
+    return $return;
   }
 
   public function selectById($id) {

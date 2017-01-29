@@ -18,6 +18,10 @@ $routes = array(
   'detail' => array(
     'controller' => 'Events',
     'action' => 'detail'
+  ),
+  'error' => array(
+    'controller' => 'Events',
+    'action' => 'error'
   )
 );
 
@@ -25,7 +29,7 @@ if(empty($_GET['page'])) {
   $_GET['page'] = 'home';
 }
 if(empty($routes[$_GET['page']])) {
-  header('Location: index.php');
+  header('Location: index.php?page=error');
   exit();
 }
 

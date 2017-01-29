@@ -5,7 +5,9 @@
     <title>DOK</title>
     <?php echo $css;?>
   </head>
-  <header class="header">
+  <header class="header <?php if ($_GET['page'] !== 'home') {
+    echo 'header_small';
+  } ?>">
     <nav class="nav center">
       <a href="index.php" class="nav_logo"><span class="nav_logo_span">DOK</span></a>
       <a href="index.php?page=agenda" class="nav_link">Agenda</a>
@@ -18,7 +20,14 @@
     <h2 class="center header_subtitle">Open vanaf 1 mei 2017 tot 25 september 2017</h2>
   </header>
   <body>
-
+    <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
     <div class="container">
       <?php if(!empty($_SESSION['info'])): ?><div class="alert alert-success"><?php echo $_SESSION['info'];?></div><?php endif; ?>
       <?php if(!empty($_SESSION['error'])): ?><div class="alert alert-danger"><?php echo $_SESSION['error'];?></div><?php endif; ?>
@@ -30,11 +39,11 @@
   </body>
   <footer class="footer_box">
     <article class="footer_social">
-      <a href="#" class="footer_twitter"><span class="footer_span">twitter</span></a>
-      <a href="#" class="footer_facebook"><span class="footer_span">facebook</span></a>
-      <a href="#" class="footer_instagram"><span class="footer_span">instagram</span></a>
-      <a href="#" class="footer_email"><span class="footer_span">email</span></a>
-      <a href="#" class="footer_phone"><span class="footer_span">phone</span></a>
+      <a href="https://www.twitter.com" class="footer_twitter" target="_blank"><span class="footer_span">twitter</span></a>
+      <a href="https://www.facebook.com" class="footer_facebook" target="_blank"><span class="footer_span">facebook</span></a>
+      <a href="https://www.instagram.com" class="footer_instagram" target="_blank"><span class="footer_span">instagram</span></a>
+      <a href="mailto:dok@info.be" class="footer_email" target="_blank"><span class="footer_span">email</span></a>
+      <a href="tel:0499999999" class="footer_phone" target="_blank"><span class="footer_span">phone</span></a>
     </article>
     <article class="sponsor_box">
       <img src="../assets/img/sogent_ok.jpg" alt="" class="sponsor">
