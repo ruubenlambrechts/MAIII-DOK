@@ -272,18 +272,11 @@ html {
     font-size: 1.8rem;
     text-align: center;
     text-transform: capitalize;
+    padding: 0 1rem;
   }
 
   &_date {
     font-size: 1.8rem;
-  }
-
-  &_time::before {
-    @apply(--display_block);
-    height: .5rem;
-    width: 5rem;
-    background-color: var(--yellow);
-    margin: auto;
   }
 
   &_tag {
@@ -519,28 +512,31 @@ html {
     color: var(--green);
     margin: 2rem 0;
   }
-}
 
-input[type='email'] {
-  font-size: 1.4rem;
-  padding: 1.7rem;
-  width: 48rem;
-  border: none;
-}
+  &_input_box {
 
-input[type='submit'] {
-  @apply(--bevan);
-  color: var(--deep_purple);
-  background-color: var(--green);
-  border: none;
-  padding: 0;
-  font-size: 2rem;
-  height: 5.1rem;
-  width: 14.2rem;
-}
+    & input[type='email'] {
+      font-size: 1.4rem;
+      padding: 1.7rem;
+      width: 48rem;
+      border: none;
+    }
 
-input[type='submit']:hover {
-  background-color: var(--red);
+    & input[type='submit'] {
+      @apply(--bevan);
+      color: var(--deep_purple);
+      background-color: var(--green);
+      border: none;
+      padding: 0;
+      font-size: 2rem;
+      height: 5.1rem;
+      width: 14.2rem;
+    }
+
+    & input[type='submit']:hover {
+      background-color: var(--red);
+    }
+  }
 }
 
 .genoeg {
@@ -580,17 +576,20 @@ input[type='submit']:hover {
 .agenda {
 
   &_months {
+    @apply(--space_around);
     width: 100%;
     background: linear-gradient(to bottom, color(black a(0)) 40%, var(--green) 40%, var(--green) 60%, color(black a(0)) 60%, color(black a(0)) 100%);
   }
 
-  &_months_nav {
-    @apply(--space_around);
-    margin: auto;
-    width: 80%;
+  &_form_months_box {
+    width: 60%;
   }
 
-  &_months_nav a {
+  &_months_box {
+    @apply(--space_around);
+  }
+
+  &_reset {
     @apply(--bevan);
     text-decoration: none;
     font-size: 2rem;
@@ -599,8 +598,15 @@ input[type='submit']:hover {
     padding: 1rem;
   }
 
-  &_months_nav a:hover {
+  &_reset:hover {
     background-color: var(--red);
+  }
+
+  &_form_tag_box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
   }
 }
 

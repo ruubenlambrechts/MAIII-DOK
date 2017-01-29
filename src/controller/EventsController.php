@@ -113,6 +113,14 @@ class EventsController extends Controller {
       'value' => date('Y-m-d 00:00:00')
     );
 
+    if (isset($_GET['tag'])) {
+      $conditions[1] = array(
+        'field' => 'tag',
+        'comparator' => '=',
+        'value' => $_GET['tag'],
+      );
+    }
+
     if (isset($_GET['month'])) {
       if ($_GET['month'] == 'mei') {
         $conditions[1] = array(
@@ -173,6 +181,13 @@ class EventsController extends Controller {
           'field' => 'start',
           'comparator' => '<=',
           'value' => date("Y-m-31 H:i:s", strtotime("$start +4 months")),
+        );
+      }
+      if (isset($_GET['tag'])) {
+        $conditions[3] = array(
+          'field' => 'tag',
+          'comparator' => '=',
+          'value' => $_GET['tag'],
         );
       }
     }

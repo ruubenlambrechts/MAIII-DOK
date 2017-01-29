@@ -1,20 +1,51 @@
 <section class="section agenda_months">
-  <nav class="agenda_months_nav">
-    <a href="index.php?page=agenda">Toon alles</a>
-    <a href="index.php?page=agenda&month=mei">Mei</a>
-    <a href="index.php?page=agenda&month=juni">Juni</a>
-    <a href="index.php?page=agenda&month=juli">Juli</a>
-    <a href="index.php?page=agenda&month=augustus">Augustus</a>
-    <a href="index.php?page=agenda&month=september">September</a>
-  </nav>
-</section>
-<section>
-  <form class="agenda_form_box" action="index.php?page=agenda" method="get">
-    <label for="moestuin">Moestuin</label>
+  <form action="index.php" method="get" class="agenda_form_months_box">
     <input name="page" value="agenda" hidden>
-    <input type="checkbox" name="tag" value="moestuin" id="moestuin">
-    <input type="submit">
+    <div class="agenda_months_box">
+      <?php if (isset($_GET['tag'])) { ?>
+        <a href="index.php?page=agenda&tag=<?php echo $_GET['tag']; ?>" class="agenda_reset">Toon alles</a>
+      <? } else { ?>
+        <a href="index.php?page=agenda" class="agenda_reset">Toon alles</a>
+      <? } ?>
+      <input type="submit" name="month" value="mei">
+      <input type="submit" name="month" value="juni">
+      <input type="submit" name="month" value="juli">
+      <input type="submit" name="month" value="augustus">
+      <input type="submit" name="month" value="september">
+    </div>
+    <?php if (isset($_GET['tag'])) { ?>
+      <input name="tag" value="<?php echo $_GET['tag']; ?>" hidden>
+    <? } ?>
   </form>
+</section>
+<section class="agenda_form_tag_box section">
+  <form action="index.php" method="get">
+    <input name="page" value="agenda" hidden>
+    <?php if (isset($_GET['month'])) { ?>
+      <input name="month" value="<?php echo $_GET['month']; ?>" hidden>
+    <? } ?>
+    <div>
+      <input type="submit" name="tag" value="circus">
+      <input type="submit" name="tag" value="concert">
+      <input type="submit" name="tag" value="dj">
+      <input type="submit" name="tag" value="expo">
+      <input type="submit" name="tag" value="rommelmarkt">
+      <input type="submit" name="tag" value="zondag">
+      <input type="submit" name="tag" value="film">
+      <input type="submit" name="tag" value="gastvrijheid">
+      <input type="submit" name="tag" value="moestuin">
+      <input type="submit" name="tag" value="cosy cozy">
+      <input type="submit" name="tag" value="voorstelling">
+      <input type="submit" name="tag" value="werkgroep">
+    </div>
+  </form>
+  <?php if (isset($_GET['tag'])) { ?>
+    <?php if (isset($_GET['month'])) { ?>
+      <a href="index.php?page=agenda&month=<?php echo $_GET['month']; ?>" class="agenda_reset">bin</a>
+    <? } else { ?>
+      <a href="index.php?page=agenda" class="agenda_reset">bin</a>
+    <? } ?>
+  <? } ?>
 </section>
 
 <section class="section">
