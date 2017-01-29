@@ -1,10 +1,11 @@
 <a href="index.php?page=agenda">Go back</a>
   <?php $currentTitle = 'none';
-        $currentTags = 'none'; ?>
+        $i = 0; ?>
   <?php foreach($events as $event): ?>
     <?php if ($event['id'] == $_GET['id']): ?>
       <?php $currentTitle = $event['title'];
-      $currentDate = $event['start']; ?>
+      $currentDate = $event['start'];
+      $currentTags = $event['tags']; ?>
       <section class="detail_box section">
         <div class="detail_flex <?php if (count($event['locations']) < 2) {
           foreach($event['locations'] as $location): ?>
@@ -64,45 +65,73 @@
           endif; ?>
       </section>
     <?php endif; ?>
-    <?php if ($currentTitle == $event['title'] && $currentDate < $event['start']) { ?>
-      <section class="section ">
-        <a class="event_box<?php
-          if (count($event['locations']) < 2) {
-          foreach($event['locations'] as $location):
-            echo " event_" . $location['name'];
-          endforeach;
-        }; ?>" href="index.php?page=detail&id=<?php echo $event['id']?>">
+  <?php endforeach ?>
 
+  <section class="section detail_next_recommended_box">
+    <article class="detail_next_box">
+      <header class="title_box">
+        <h1 class="title">Het eerst volgende evenement</h1>
+      </header>
+      <?php foreach($events as $event): ?>
+        <?php if ($currentTitle == $event['title'] && $currentDate < $event['start']) { ?>
+          <article>
+            <a class="event_box<?php
+              if (count($event['locations']) < 2) {
+              foreach($event['locations'] as $location):
+                echo " event_" . $location['name'];
+              endforeach;
+            }; ?>" href="index.php?page=detail&id=<?php echo $event['id']?>">
+
+              <?php
+                foreach($event['media'] as $media): echo $media['media1'];
+              endforeach?>
+              <div class="event_context_box">
+                <header class="event_title"r>
+                  <h1><?php echo mb_strtolower($event['title'], 'UTF-8') ?></h1>
+                </header>
+                <p class="event_date"><?php
+                    $eventStart = strtotime($event['start']);
+                    echo date("d M Y", $eventStart)
+                  ?></p>
+                <p class="event_time"><?php
+                  $eventEnd = strtotime($event['end']);
+                  echo date("H.i", $eventStart) . " - " . date("H.i", $eventEnd);
+                  ?></p>
+              </div>
+              <div class="event_extra">
+                <p class="event_location"><?php
+                    foreach($event['locations'] as $location):
+                      echo $location['name'] . " ";
+                  endforeach?></p>
+                <?php
+                    foreach($event['tags'] as $tag):
+                      echo '<p class="event_tag">' . $tag['tag'];
+                  endforeach?></p>
+              </div>
+            </a>
+          </article>
           <?php
-            foreach($event['media'] as $media): echo $media['media1'];
-          endforeach?>
-          <div class="event_context_box">
-            <header class="event_title"r>
-              <h1><?php echo mb_strtolower($event['title'], 'UTF-8') ?></h1>
-            </header>
-            <p class="event_date"><?php
-                $eventStart = strtotime($event['start']);
-                echo date("d M Y", $eventStart)
-              ?></p>
-            <p class="event_time"><?php
-              $eventEnd = strtotime($event['end']);
-              echo date("H.i", $eventStart) . " - " . date("H.i", $eventEnd);
-              ?></p>
-          </div>
-          <div class="event_extra">
-            <p class="event_location"><?php
-                foreach($event['locations'] as $location):
-                  echo $location['name'] . " ";
-              endforeach?></p>
-            <?php
-                foreach($event['tags'] as $tag):
-                  echo '<p class="event_tag">' . $tag['tag'];
-              endforeach?></p>
-          </div>
-        </a>
-      </section>
-    <? } ?>
-  <? endforeach;?>
+          $i++;
+          if ($i === 1 ) {
+            break;
+          }
+           ?>
+        <? } ?>
+      <? endforeach;?>
+    </article>
+    <article class="detail_recommended_box">
+      <header class="title_box">
+        <h1 class="title">Aanbevelingen</h1>
+      </header>
+      <article class="detail_recommended_article">
+        <?php foreach($events as $event): ?>
+        <?php if ($currentTags == $event['tags'] && $currentDate < $event['start']) {
+          echo 'lol';
+        }; ?>
+         <? endforeach;?>
+      </article>
+    </article>
+  </section>
 
   <section class="detail_button_box">
     <div class="fb-share-button home_footer_buttons center" data-href="http://student.howest.be/ruuben.lambrechts/20162017/ma3/dok/index.php?page=detail&amp;id=22">

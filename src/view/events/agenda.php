@@ -51,6 +51,9 @@
   <div class="event_container">
     <?php $i = 0;
     foreach($events as $event): ?>
+    <?php if (!isset($event)): ?>
+      <p>er zijn geen evenementen om te weergeven.</p>
+    <?php endif; ?>
       <a class="event_box<?php
         if (count($event['locations']) < 2) {
         foreach($event['locations'] as $location):

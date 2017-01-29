@@ -829,6 +829,21 @@ input[type='submit']:focus {
       height: 100%;
     }
   }
+
+  &_next_recommended_box {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &_next_box {
+    background-color: var(--deep_purple);
+    padding: 3rem;
+  }
+
+  &_recommended_box {
+    background-color: var(--deep_purple);
+    padding: 3rem;
+  }
 }
 
 .footer {

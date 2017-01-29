@@ -1,8 +1,4 @@
-const init = () => {
-
-  search(`cat`);
-
-};
+const $img = document.querySelector(`.error_gif_result`);
 
 const checkStatus = response => {
   if (!response.ok) throw Error(response.statusText);
@@ -14,7 +10,6 @@ const loadImage = data => {
   const gif = data[Math.floor(Math.random() * data.length)];
   // console.log(gif);
 
-  const $img = document.querySelector(`.error_gif_result`);
   $img.src = gif.images.original.url;
 };
 
@@ -24,6 +19,14 @@ const search = value => {
   .then(checkStatus)
       .then(r => r.json())
       .then(loadImage);
+};
+
+const init = () => {
+
+  if ($img) {
+    search(`cat`);
+  }
+
 };
 
 init();
