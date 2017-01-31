@@ -32,7 +32,7 @@
 
   --bevan: {
     font-family: Bevan;
-    letter-spacing: .04rem;
+    letter-spacing: .06rem;
   };
 
   --space_between: {
@@ -68,6 +68,7 @@ input[type='submit']:focus {
 
 .header {
   height: 41.4rem;
+  width: 100vw;
   background: url(../assets/img/header_img.png) no-repeat top, var(--deep_purple);
   position: relative;
   overflow: hidden;
@@ -79,6 +80,7 @@ input[type='submit']:focus {
     top: -.5rem;
     left: -8rem;
     background: url(../assets/img/swirl_l.svg) no-repeat left top;
+    animation: move-left 10s infinite;
   }
 
   &::after {
@@ -88,10 +90,16 @@ input[type='submit']:focus {
     top: 13rem;
     right: -2rem;
     background: url(../assets/img/swirl_r.svg) no-repeat top right;
+    animation: move-right 14s infinite;
   }
 
   &_small {
     height: 13rem;
+    overflow: visible;
+  }
+
+  &_small > &_title, &_small > &_subtitle, &_small > .nav > .nav_logo::after, &_small::before, &_small::after {
+    display: none;
   }
 
   &_title {
@@ -116,15 +124,44 @@ input[type='submit']:focus {
   }
 }
 
+@keyframes move-right {
+
+  from { transform: translateY(1rem) translateX(2rem); }
+
+  30% { transform: translateX(-1rem); }
+
+  50% { transform: translateY(-2rem); }
+
+  to { transform: translateY(1rem) translateX(2rem); }
+}
+
+@keyframes move-left {
+
+  from { transform: translateX(1rem) rotate(2deg); }
+
+  50% { transform: translateX(-1rem) rotate(0deg); }
+
+  75% { transform: rotate(5deg)); }
+
+  to { transform: translateX(1rem) rotate(2deg); }
+}
+
 .section {
   margin-bottom: 5rem;
   margin-top: 5rem;
 }
 
 .nav {
-  @apply(--space_between);
+  @apply(--space_around);
   position: relative;
   padding-top: 2rem;
+  width: 77vw;
+  margin: auto;
+
+  &_link_box {
+    @apply(--space_around);
+    width: 70%;
+  }
 
   &_link {
     @apply(--bevan);
@@ -132,10 +169,12 @@ input[type='submit']:focus {
     height: 2.2rem;
     color: var(--salmon);
     text-decoration: none;
+    transition: color .3s;
   }
 
   &_link:hover {
     color: var(--green);
+    transition: color .3s;
   }
 
   &_logo_span {
@@ -156,6 +195,46 @@ input[type='submit']:focus {
     background: url(../assets/img/header_bubbles.svg) no-repeat;
     top: 11rem;
     left: 2rem;
+  }
+
+  &_hamburger {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &_link {
+      margin-bottom: .5rem;
+    }
+
+    &_box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    &_menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 20rem;
+      background-color: var(--deep_purple);
+      border: 5px solid var(--red);
+    }
+
+    &_menu a {
+      color: var(--green);
+      margin: 1rem;
+      display: none;
+    }
+
+    &_menu a:active, &_menu a:hover {
+      color: var(--red);
+    }
   }
 }
 
@@ -179,8 +258,10 @@ input[type='submit']:focus {
 .event {
 
   &_container {
-    @apply(--space_around);
+    @apply(--space_between);
     flex-wrap: wrap;
+    width: 65vw;
+    margin: auto;
   }
 
   &_home_box {
@@ -192,8 +273,8 @@ input[type='submit']:focus {
     width: 31.2rem;
     height: 27.5rem;
     background: url(../assets/img/next_l.svg) no-repeat;
-    left: -18rem;
     top: 6rem;
+    left: 2rem;
   }
 
   &_home::after {
@@ -201,8 +282,8 @@ input[type='submit']:focus {
     width: 31.2rem;
     height: 27.5rem;
     background: url(../assets/img/next_r.svg) no-repeat;
-    right: -25rem;
     bottom: -1rem;
+    right: -5rem;
     z-index: -1;
   }
 
@@ -217,7 +298,6 @@ input[type='submit']:focus {
     position: relative;
     background-color: var(--yellow);
     flex-direction: column;
-    align-items: center;
     font-size: 1.4rem;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
@@ -309,11 +389,13 @@ input[type='submit']:focus {
   }
 
   &_box {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     display: flex;
     background-color: var(--deep_purple);
     align-items: center;
     height: 26.8rem;
-    margin-bottom: 6rem;
+    width: 70vw;
+    margin: auto;
   }
 }
 
@@ -324,6 +406,7 @@ input[type='submit']:focus {
   font-size: 1.4rem;
   line-height: 2rem;
   position: relative;
+  margin-top: 5rem;
 }
 
 .zondag_img {
@@ -360,7 +443,7 @@ input[type='submit']:focus {
   &_box::before {
     @apply(--display_block_absolute);
     background-color: var(--blue);
-    width: 15%;
+    width: 20%;
     height: 2.5rem;
     z-index: 1;
     top: 12rem;
@@ -444,6 +527,8 @@ input[type='submit']:focus {
     @apply(--space_around);
     position: relative;
     flex-wrap: wrap;
+    width: 80vw;
+    margin: auto;
   }
 
   &_zone_box a {
@@ -483,13 +568,16 @@ input[type='submit']:focus {
   &_buttons {
     @apply(--space_around);
     position: relative;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
   }
 
   &_buttons::before {
     @apply(--display_block_absolute);
     width: 13.8rem;
     height: 15rem;
-    left: -14rem;
+    left: 0;
     background: url(../assets/img/button_side.svg) no-repeat left;
   }
 
@@ -497,7 +585,7 @@ input[type='submit']:focus {
     @apply(--display_block_absolute);
     width: 13.8rem;
     height: 15rem;
-    right: -14rem;
+    right: 0;
     background: url(../assets/img/button_side.svg) no-repeat right;
     transform: scaleX(-1);
   }
@@ -520,6 +608,9 @@ input[type='submit']:focus {
 
   &_input_box {
 
+    display: flex;
+    align-items: flex-end;
+
     & input[type='email'] {
       font-size: 1.4rem;
       padding: 1.7rem;
@@ -536,10 +627,13 @@ input[type='submit']:focus {
       font-size: 2rem;
       height: 5.1rem;
       width: 14.2rem;
+      transition: background-color .3s;
+      cursor: pointer;
     }
 
     & input[type='submit']:hover {
       background-color: var(--red);
+      transition: background-color .3s;
     }
   }
 }
@@ -565,10 +659,13 @@ input[type='submit']:focus {
     padding: 0 2.5rem;
     height: 15rem;
     line-height: 2rem;
+    transition: background-color .3s;
+    z-index: 1;
   }
 
   &_button:hover {
     background-color: var(--red);
+    transition: background-color .3s;
   }
 
   &_button_title {
@@ -580,12 +677,18 @@ input[type='submit']:focus {
 
 .agenda {
 
+  &_filter {
+    margin-bottom: 0;
+  }
+
   &_months {
     @apply(--space_around);
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, color(black a(0)) 40%, var(--green) 40%, var(--green) 60%, color(black a(0)) 60%, color(black a(0)) 100%);
     text-transform: capitalize;
+    margin: 5rem 0;
   }
 
   &_form_months_box {
@@ -604,10 +707,12 @@ input[type='submit']:focus {
     font-size: 2rem;
     text-transform: capitalize;
     cursor: pointer;
+    transition: background-color .3s;
   }
 
   &_form_months_box input[type='submit']:hover {
     background-color: var(--red);
+    transition: background-color .3s;
   }
 
   &_reset_months {
@@ -617,10 +722,12 @@ input[type='submit']:focus {
     color: var(--deep_purple);
     background-color: var(--green);
     padding: 1rem;
+    transition: background-color .3s;
   }
 
   &_reset_months:hover {
     background-color: var(--red);
+    transition: background-color .3s;
   }
 
   &_tags {
@@ -648,11 +755,15 @@ input[type='submit']:focus {
     text-transform: capitalize;
     cursor: pointer;
     margin-bottom: 1rem;
+    transition: background-color .3s;
+    transition: color .3s;
   }
 
   &_form_tags_box input[type='submit']:hover {
     background-color: #919191;
     color: #cbcbcb;
+    transition: background-color .3s;
+    transition: color .3s;
   }
 
   &_reset_tags {
@@ -662,6 +773,7 @@ input[type='submit']:focus {
     background: url(../assets/img/bin.svg) no-repeat center center, var(--red);
     width: 6rem;
     height: 3.5rem;
+    margin-top: -.9rem;
   }
 
   &_reset_tags span {
@@ -684,10 +796,15 @@ input[type='submit']:focus {
     background-color: var(--yellow);
   }
 
-  &_flex > img {
+  &_flex picture {
     width: 40%;
-    object-fit: cover;
     filter: grayscale(1) opacity(.5) contrast(.8) brightness(1.8);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  &_flex img {
+    height: 100%;
+    /*width: 50vw;*/
   }
 
   &_content {
@@ -713,6 +830,7 @@ input[type='submit']:focus {
     @apply(--space_between);
     font-size: 1.6rem;
     text-transform: capitalize;
+    position: relative;
   }
 
   &_info::before {
@@ -720,7 +838,7 @@ input[type='submit']:focus {
     width: 100%;
     height: .2rem;
     background-color: var(--yellow);
-    bottom: 0;
+    top: -1rem;
   }
 
   &_header {
@@ -744,20 +862,23 @@ input[type='submit']:focus {
 
   &_date {
     @apply(--bevan);
+    line-height: 4rem;
     width: 15%;
     background-color: var(--yellow);
     font-size: 2.5rem;
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
     color: var(--deep_purple);
   }
 
   &_social {
     @apply(--space_around);
     padding-bottom: 2rem;
+    height: 9rem;
   }
 
   &_social a:hover {
     filter: hue-rotate(120deg) brightness(.9);
+    transition: filter .3s;
   }
 
   &_DOKBox, &_DOKBox &_info::before, &_DOKBox &_date {
@@ -815,12 +936,11 @@ input[type='submit']:focus {
       @apply(--space_around);
       width: 100%;
       overflow: hidden;
+      background: linear-gradient(to bottom, color(black a(0)) 35%, var(--green) 35%, var(--green) 50%, color(black a(0)) 50%, color(black a(0)) 80%, var(--green) 80%, var(--green) 85%, color(black a(0)) 85%, color(black a(0)) 100%);
     }
 
     &_img_box {
       height: 30rem;
-      display: flex;
-      align-items: center;
       border: .5rem solid var(--green);
     }
 
@@ -833,6 +953,7 @@ input[type='submit']:focus {
   &_next_recommended_box {
     display: flex;
     justify-content: space-around;
+    background: linear-gradient(to bottom, color(black a(0)) 35%, var(--green) 35%, var(--green) 65%, color(black a(0)) 65%, color(black a(0)) 100%);
   }
 
   &_next_box {
@@ -857,10 +978,12 @@ input[type='submit']:focus {
 
   &_social a {
     height: 4rem;
+    transition: filter .3s;
   }
 
   &_social a:hover {
     filter: hue-rotate(120deg) brightness(.9);
+    transition: filter .3s;
   }
 
   &_span {
@@ -908,6 +1031,8 @@ input[type='submit']:focus {
     width: 90%;
     margin: auto;
     align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
 
@@ -960,4 +1085,242 @@ input[type='submit']:focus {
   50% { filter: hue-rotate(360deg); }
 
   to { filter: hue-rotate(0deg); }
+}
+
+.hidden {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media (width <= 1240px) {
+
+  .event_container {
+    width: 70vw;
+  }
+
+  .zondag_text_box {
+    position: relative;
+    width: 70vw;
+  }
+
+  .zondag_text_img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    filter: opacity(.25) grayscale(1);
+  }
+}
+
+@media (width <= 1170px) {
+
+  .header::after, .header::before {
+    display: none;
+  }
+
+  .nav {
+    width: 90vw;
+  }
+
+  .event_container {
+    width: 90vw;
+    justify-content: space-around;
+  }
+
+}
+
+@media (width <= 1185px) {
+
+  .home_footer_buttons::before, .home_footer_buttons::after {
+    display: none;
+  }
+}
+
+@media (width <= 1100px) {
+
+  .genoeg_button {
+    width: 60vw;
+  }
+
+  .genoeg_1 {
+    margin-bottom: 2rem;
+  }
+
+  .event_container::before, .event_container::after {
+    display: none;
+  }
+
+}
+
+@media (width <= 1000px) {
+
+  .genoeg_button {
+    width: 80vw;
+  }
+
+  .link_zone_box {
+    width: 100vw;
+  }
+
+  .nav_blogs {
+    display: none;
+  }
+
+  .nav {
+    width: 85vw;
+    margin-left: 2rem;
+  }
+
+  .nav_hamburger {
+    display: flex;
+  }
+
+  .nav_hamburger_blogs {
+    display: block;
+  }
+}
+
+@media (width <= 950px) {
+
+  .header {
+    height: 13rem;
+    overflow: visible;
+  }
+
+  .header_title, .header_subtitle, .nav_logo::after {
+    display: none;
+  }
+
+  .nav_link_box {
+    width: 60%;
+  }
+}
+
+@media (width <= 890px) {
+
+  .event_container {
+    width: 100vw;
+  }
+
+  .agenda_form_months_box {
+    flex-wrap: wrap;
+  }
+}
+
+@media (width <= 799px) {
+
+  .zondag_text_box {
+    width: 100vw;
+  }
+
+  .nav_praktisch {
+    display: none;
+  }
+
+  .sponsor {
+    padding: 0 .5rem;
+  }
+}
+
+@media (width <= 779px) {
+
+  .link_zone_box {
+    background: var(--salmon);
+  }
+}
+
+@media (width <= 757px) {
+
+  .agenda_months {
+    background: var(--salmon);
+  }
+
+  .agenda_form_months_box input, .agenda_form_months_box a {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (width <= 720px) {
+
+  .zondag_box {
+    flex-direction: column;
+  }
+
+  .zondag_taart_box::before, .zondag_dj_box::before, .zondag_dj_box::after, .zondag_markt_box::before {
+    display: none;
+  }
+
+  .zondag_taart_box, .zondag_dj_box {
+    margin-bottom: 4rem;
+  }
+
+  .genoeg_button, .home_footer, .home_footer_buttons {
+    width: 100vw;
+  }
+
+  .home_footer {
+    padding: 3rem 0;
+  }
+
+  .newsletter_input_box input[type='email'] {
+    width: 75vw;
+  }
+}
+
+@media (width <= 680px) {
+
+  .header {
+    background: var(--deep_purple);
+  }
+
+  .nav {
+    width: 75vw;
+  }
+
+  .nav_activiteiten {
+    display: none;
+  }
+
+  .nav_link_box {
+    width: 40%;
+  }
+}
+
+@media (width <= 570px) {
+
+  .newsletter_input_box input[type='email'] {
+    width: 70vw;
+  }
+}
+
+@media (width <= 520px) {
+
+  .nav {
+    flex-direction: column;
+  }
+
+  .nav_link:first-child {
+    margin-right: 10rem;
+  }
+
+  .nav_link_box {
+    width: 100vw;
+  }
+
+  .nav_logo {
+    margin-bottom: 3rem;
+  }
+
+  .nav_info {
+    flex: 3;
+  }
+
+  .header {
+    height: 20rem;
+  }
+
+  .nav_hamburger_menu {
+    width: 15rem;
+  }
 }

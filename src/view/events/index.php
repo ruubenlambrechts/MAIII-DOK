@@ -1,9 +1,9 @@
-<section class="section event_home_box center">
+<section class="section event_home_box">
   <header class="title_box">
     <h1 class="title">De eerst volgende evenementen</h1>
   </header>
   <div class="event_container event_home">
-    <?php $i = 0;
+    <? $i = 0;
     foreach($events as $event): ?>
       <a class="event_box<?php
         if (count($event['locations']) < 2) {
@@ -12,11 +12,15 @@
         endforeach;
       }; ?>" href="index.php?page=detail&id=<?php echo $event['id']?>">
 
-        <?php
-          foreach($event['media'] as $media): echo $media['media1'];
-          // echo $media['media2'];
-          // echo $media['media3'];
-        endforeach?>
+        <?php foreach($event['media'] as $media): ?>
+          <picture>
+            <source type="image/webp"
+                  srcset="assets/img/database/<? echo $media['media1']; ?>.webp">
+            <img
+              src="assets/img/database/<? echo $media['media1']; ?>.jpg"
+              alt="<? echo $media['media1']; ?>">
+          </picture>
+        <? endforeach ?>
         <div class="event_context_box">
           <header class="event_title"r>
             <h1><?php echo mb_strtolower($event['title'], 'UTF-8') ?></h1>
@@ -54,16 +58,23 @@
   <header class="title_box">
     <h1 class="title">Elke zondag bij DOK</h1>
   </header>
-  <div class="zondag_text_box center">
+  <div class="zondag_text_box">
     <article class="zondag_text">
       <p>Vanaf 1 mei 2017 tot 25 september 2017 opent DOK haar deuren iedere zondag én feestdagen van 11u tot 22u. Dit wordt de vaste afspraak. De DOKbewoners openen DOK ook op andere dagen (voor meer info hierover raadpleeg je best de agenda).</p>
     </article>
-    <img src="../assets/img/zondag_text_img.jpg" alt="zondag_text_img" class="zondag_text_img">
+    <picture>
+      <source type="image/webp"
+              srcset="assets/img/zondag_text_img.webp">
+      <img src="assets/img/zondag_text_img.jpg" alt="zondag_text_img" class="zondag_text_img">
+    </picture>
   </div>
   <div class="zondag_box">
     <article class="zondag_taart_box">
       <div class="zondag_taart zondag_img_box">
-        <img src="../assets/img/zondag_taart.jpg" alt="zondag taart" class="zondag_img">
+        <picture>
+          <source type="image/webp" srcset="assets/img/zondag_taart.webp">
+          <img src="assets/img/zondag_taart.jpg" alt="zondag taart" class="zondag_img">
+        </picture>
       </div>
       <header>
         <h1 class="zondag_img_h1">Taart, Koffie, Gebak</h1>
@@ -72,7 +83,10 @@
     </article>
     <article class="zondag_dj_box">
       <div class="zondag_dj zondag_img_box">
-        <img src="../assets/img/zondag_dj.jpg" alt="zondag dj" class="zondag_img">
+        <picture>
+          <source type="image/webp" srcset="assets/img/zondag_dj.webp">
+          <img src="assets/img/zondag_dj.jpg" alt="zondag dj" class="zondag_img">
+        </picture>
       </div>
       <header class="zondag_img_text_box">
         <h1 class="zondag_img_h1">Gezellige DJ's</h1>
@@ -81,7 +95,10 @@
     </article>
     <article class="zondag_markt_box">
       <div class="zondag_markt zondag_img_box">
-        <img src="../assets/img/zondag_markt.jpg" alt="zondag markt" class="zondag_img">
+        <picture>
+          <source type="image/webp" srcset="assets/img/zondag_markt.webp">
+          <img src="assets/img/zondag_markt.jpg" alt="zondag markt" class="zondag_img">
+        </picture>
       </div>
       <header class="zondag_img_text_box">
         <h1 class="zondag_img_h1">Rommelmarkt</h1>
@@ -94,7 +111,7 @@
   <header class="title_box">
     <h1 class="title">Ontdek alle zones van DOK</h1>
   </header>
-  <div class="link_zone_box center">
+  <div class="link_zone_box">
     <a href="#" class="link_zone link_kantine">DOKKantine</a>
     <a href="#" class="link_zone link_box">DOKBox</a>
     <a href="#" class="link_zone link_park">DOKPark</a>
@@ -106,24 +123,24 @@
   <header class="title_box">
     <h1 class="genoeg_title">Krijg je niet genoeg van DOK?</h1>
   </header>
-  <form class="newsletter_form center" action="index.php" method="post">
+  <form class="newsletter_form" action="index.php" method="post">
     <label for="newsletter_email" class="newsletter_label">Schrijf je dan in voor de nieuwsbrief!</label>
     <div class="newsletter_input_box">
       <input type="email" name="newsletter_email" value="" placeholder="info@dokgent.be"><input type="submit" name="" value="Inschrijven">
     </div>
   </form>
-  <div class="home_footer_buttons center">
-    <a href="#" class="genoeg_button">
+  <div class="home_footer_buttons">
+    <a href="#" class="genoeg_button genoeg_1">
       <header>
         <h1 class="genoeg_button_title">DOK Rommelmarkt</h1>
-    </header>
-    <p>Verkoop je oude spulletjes op de DOK Rommelmarkt</p>
-  </a>
-    <a href="#" class="genoeg_button">
+      </header>
+      <p>Verkoop je oude spulletjes op de DOK Rommelmarkt</p>
+    </a>
+    <a href="#" class="genoeg_button genoeg_r">
       <header>
         <h1 class="genoeg_button_title">DOK Bewoner</h1>
-    </header>
-    <p>Wordt een DOK Bewoner en beleef elke dag het DOK leven</p>
+      </header>
+      <p>Wordt een DOK Bewoner en beleef elke dag het DOK leven</p>
     </a>
   </div>
 </section>

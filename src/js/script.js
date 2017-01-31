@@ -1,4 +1,6 @@
 const $img = document.querySelector(`.error_gif_result`);
+const $filterButton = document.querySelector(`.filter_button`);
+const $hamburgerIcon = document.querySelector(`.nav_hamburger_link`);
 
 const checkStatus = response => {
   if (!response.ok) throw Error(response.statusText);
@@ -21,10 +23,37 @@ const search = value => {
       .then(loadImage);
 };
 
+const filterToggle = () => {
+  const $agendaFilter = document.querySelector(`.agenda_filter`);
+  const $filterBox = document.querySelector(`.agenda_filter_box`);
+
+  $filterBox.classList.toggle(`hidden`);
+  $agendaFilter.innerHTML = `Filter -`;
+
+  if ($filterBox.classList.contains(`hidden`)) {
+    $agendaFilter.innerHTML = `Filter +`;
+  }
+};
+
+const hamburgerOpen = () => {
+  const $hamburgerMenu = document.querySelector(`.nav_hamburger_menu`);
+
+  $hamburgerMenu.classList.toggle(`hidden`);
+};
+
+
 const init = () => {
 
   if ($img) {
     search(`cat`);
+  }
+
+  if ($filterButton) {
+    $filterButton.addEventListener(`click`, filterToggle);
+  }
+
+  if ($hamburgerIcon) {
+    $hamburgerIcon.addEventListener(`click`, hamburgerOpen);
   }
 
 };
