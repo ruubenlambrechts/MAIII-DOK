@@ -210,6 +210,10 @@ input[type='submit']:focus {
       margin-bottom: .5rem;
     }
 
+    &_link:hover, &_link:active {
+      filter: hue-rotate(160deg) brightness(1.2);
+    }
+
     &_box {
       display: flex;
       flex-direction: column;
@@ -229,7 +233,6 @@ input[type='submit']:focus {
     &_menu a {
       color: var(--green);
       margin: 1rem;
-      display: none;
     }
 
     &_menu a:active, &_menu a:hover {
@@ -340,6 +343,7 @@ input[type='submit']:focus {
 
   &_extra {
     @apply(--space_between);
+    align-items: center;
     width: 100%;
     padding: 1rem;
     background-color: var(--yellow);
@@ -373,6 +377,12 @@ input[type='submit']:focus {
   &_location {
     @apply(--bevan);
     flex: 2;
+    padding-right: 1rem;
+  }
+
+  &_locations_box, &_tags_box {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -739,7 +749,7 @@ input[type='submit']:focus {
 
   &_form_tags_box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     width: 65%;
@@ -772,8 +782,8 @@ input[type='submit']:focus {
     padding: 0 1rem;
     background: url(../assets/img/bin.svg) no-repeat center center, var(--red);
     width: 6rem;
-    height: 3.5rem;
-    margin-top: -.9rem;
+    height: 3.2rem;
+    margin-top: -1rem;
   }
 
   &_reset_tags span {
@@ -820,6 +830,14 @@ input[type='submit']:focus {
     height: 25%;
   }
 
+  &_top_locations {
+    text-align: left;
+  }
+
+  &_top_tags {
+    text-align: right;
+  }
+
   &_title {
     @apply(--bevan);
     font-size: 2.2rem;
@@ -855,9 +873,9 @@ input[type='submit']:focus {
   &_description {
     color: var(--salmon);
     line-height: 2rem;
-    width: 93%;
+    width: 100%;
     margin: auto;
-    padding: 3rem 0;
+    padding: 3rem 2rem;
   }
 
   &_date {
@@ -934,6 +952,7 @@ input[type='submit']:focus {
 
     &_box {
       @apply(--space_around);
+      flex-wrap: wrap;
       width: 100%;
       overflow: hidden;
       background: linear-gradient(to bottom, color(black a(0)) 35%, var(--green) 35%, var(--green) 50%, color(black a(0)) 50%, color(black a(0)) 80%, var(--green) 80%, var(--green) 85%, color(black a(0)) 85%, color(black a(0)) 100%);
@@ -1113,6 +1132,20 @@ input[type='submit']:focus {
   }
 }
 
+@media (width <= 1206px) {
+
+  .detail_flex {
+    width: 100vw;
+  }
+}
+
+@media (width <= 1185px) {
+
+  .home_footer_buttons::before, .home_footer_buttons::after {
+    display: none;
+  }
+}
+
 @media (width <= 1170px) {
 
   .header::after, .header::before {
@@ -1130,13 +1163,6 @@ input[type='submit']:focus {
 
 }
 
-@media (width <= 1185px) {
-
-  .home_footer_buttons::before, .home_footer_buttons::after {
-    display: none;
-  }
-}
-
 @media (width <= 1100px) {
 
   .genoeg_button {
@@ -1151,6 +1177,14 @@ input[type='submit']:focus {
     display: none;
   }
 
+}
+
+@media (width <= 1026px) {
+
+  .detail_top_time {
+    width: 40%;
+    margin-left: -7rem;
+  }
 }
 
 @media (width <= 1000px) {
@@ -1195,6 +1229,14 @@ input[type='submit']:focus {
   .nav_link_box {
     width: 60%;
   }
+
+  .error_box {
+    width: 90vw;
+  }
+
+  .error_gif_result {
+    width: 80vw;
+  }
 }
 
 @media (width <= 890px) {
@@ -1205,6 +1247,14 @@ input[type='submit']:focus {
 
   .agenda_form_months_box {
     flex-wrap: wrap;
+  }
+
+  .detail_media_box {
+    background: var(--salmon);
+  }
+
+  .detail_media_img_box {
+    margin-bottom: 2rem;
   }
 }
 
@@ -1218,8 +1268,33 @@ input[type='submit']:focus {
     display: none;
   }
 
+  .nav_hamburger_praktisch {
+    display: block;
+  }
+
   .sponsor {
     padding: 0 .5rem;
+  }
+
+  .detail_flex picture {
+    display: none;
+  }
+
+  .detail_media_img_box_1 {
+    display: block;
+  }
+
+  .detail_top_time {
+    width: 30%;
+    margin-left: 0;
+  }
+
+  .detail_description {
+    text-align: center;
+    height: 27rem;
+    overflow-y: scroll;
+    margin-bottom: 4rem;
+    border-bottom: .3rem solid var(--salmon);
   }
 }
 
@@ -1234,6 +1309,10 @@ input[type='submit']:focus {
 
   .agenda_months {
     background: var(--salmon);
+  }
+
+  .agenda_form_months_box, .agenda_form_tags_box {
+    width: 100vw;
   }
 
   .agenda_form_months_box input, .agenda_form_months_box a {
@@ -1282,8 +1361,17 @@ input[type='submit']:focus {
     display: none;
   }
 
+  .nav_hamburger_activiteiten {
+    display: block;
+  }
+
   .nav_link_box {
     width: 40%;
+  }
+
+  .detail_top_time {
+    width: 40%;
+    margin-left: -2rem;
   }
 }
 
@@ -1292,35 +1380,206 @@ input[type='submit']:focus {
   .newsletter_input_box input[type='email'] {
     width: 70vw;
   }
+
+  .error_box {
+    width: 100vw;
+  }
 }
 
 @media (width <= 520px) {
 
   .nav {
     flex-direction: column;
-  }
-
-  .nav_link:first-child {
-    margin-right: 10rem;
+    margin-left: 3.5rem;
   }
 
   .nav_link_box {
-    width: 100vw;
+    justify-content: space-between;
+    width: 75vw;
   }
 
   .nav_logo {
     margin-bottom: 3rem;
   }
 
-  .nav_info {
-    flex: 3;
-  }
-
   .header {
-    height: 20rem;
+    height: 19rem;
   }
 
   .nav_hamburger_menu {
-    width: 15rem;
+    width: 100vw;
+    position: absolute;
+    top: 4.5rem;
+    right: -45px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1.5rem 0;
+  }
+
+  .nav_hamburger {
+    top: 13.5rem;
+    right: 4.5rem;
+  }
+
+  .nav_info {
+    display: none;
+  }
+
+  .nav_hamburger_info {
+    display: block;
+  }
+
+  .detail_top_time {
+    width: 30%;
+  }
+
+  .detail_top_tags {
+    margin-left: -2rem;
+  }
+
+  .detail_info {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    height: 5rem;
+  }
+
+  .detail_info::before {
+    display: none;
+  }
+
+  .detail_header {
+    width: 100%;
+  }
+
+  .detail_date {
+    width: 25vw;
+  }
+
+  .error_404 {
+    font-size: 20vw;
+  }
+
+  .error_text {
+    font-size: 5vw;
+  }
+
+  .error_gif_result {
+    width: 100vw;
+  }
+}
+
+@media (width <= 446px) {
+
+  .detail_top_time {
+    width: 50%;
+  }
+}
+
+@media (width <= 422px) {
+
+  .detail_button {
+    padding: 2rem 0;
+  }
+}
+
+@media (width <= 480px) {
+
+  .newsletter_input_box input[type='email'], .newsletter_input_box input[type='submit'] {
+    width: 100vw;
+  }
+
+  .newsletter_input_box {
+    flex-direction: column;
+  }
+
+  .zondag_text_img {
+    display: none;
+  }
+
+  .header {
+    position: fixed;
+    z-index: 2;
+  }
+
+  .first_section {
+    margin-top: 23rem;
+  }
+
+  .error_section {
+    margin-top: 19rem;
+  }
+
+  .detail_media_img_box {
+    height: auto;
+  }
+
+  .detail_media_img_box img {
+    width: 100%;
+    height: auto;
+  }
+
+  .detail_next_recommended_box, .detail_next_box, .event_box {
+    width: 100vw;
+    padding: 0;
+  }
+
+  .detail_next_box .title_box {
+    padding-top: 2rem;
+  }
+
+  .detail_date {
+    width: 30vw;
+  }
+
+}
+
+@media (width <= 400px) {
+
+  .event_box img {
+    width: 130%;
+    left: -2.5rem;
+  }
+
+  .error_box {
+    flex-direction: column;
+  }
+
+  .error_text {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    width: 70vw;
+    text-align: center;
+  }
+
+  .error_404 {
+    font-size: 10rem;
+  }
+}
+
+@media (width <= 330px) {
+
+  .zondag_img_box {
+    transform: scale(.9);
+  }
+
+  .zondag_taart_box, .zondag_dj_box {
+    margin-bottom: 2rem;
+  }
+
+  .agenda_reset_tags {
+    margin-top: 0;
+  }
+}
+
+@media (width <= 322px) {
+
+  .event_extra {
+    align-items: center;
+  }
+
+  .event_location {
+    line-height: 1.5rem;
   }
 }

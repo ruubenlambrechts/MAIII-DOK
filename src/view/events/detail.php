@@ -4,7 +4,7 @@
   <?php if ($event['id'] == $_GET['id']): ?>
     <?php $currentTitle = $event['title'];
     $currentDate = $event['start']; ?>
-    <section class="detail_box section">
+    <section class="detail_box section first_section">
       <div class="detail_flex <?php if (count($event['locations']) < 2) {
         foreach($event['locations'] as $location): ?>
       <?php echo 'detail_' . $location['name'] . ' ';?>
@@ -24,14 +24,14 @@
             <header class="detail_header">
               <h1 class="detail_title"><?php echo mb_strtolower($event['title'], 'UTF-8') ?></h1>
               <div class="detail_info">
-                <p><?php foreach($event['locations'] as $location): ?>
+                <p class="detail_top_locations"><?php foreach($event['locations'] as $location): ?>
                 <?php echo $location['name'];?>
                 <?php endforeach; ?></p>
-                <p><?php
+                <p class="detail_top_time"><?php
                   $eventStart = strtotime($event['start']);
                   $eventEnd = strtotime($event['end']);
                   echo date("H.i", $eventStart) . " - " . date("H.i", $eventEnd);?></p>
-                  <p><?php foreach($event['tags'] as $tag):
+                  <p class="detail_top_tags"><?php foreach($event['tags'] as $tag):
                   echo $tag['tag'] . ' ';
                 endforeach?></p>
               </div>
@@ -53,14 +53,27 @@
           }
           ?></p>
           <div class="detail_social">
-            <a href="#" class="footer_twitter"><span class="footer_span">twitter</span></a>
-            <a href="#" class="footer_facebook"><span class="footer_span">facebook</span></a>
-            <a href="#" class="footer_instagram"><span class="footer_span">instagram</span></a>
+            <a href="https://www.twitter.com" target="_blank" class="footer_twitter"><span class="footer_span">twitter</span></a>
+            <a href="https://www.facebook.com" target="_blank" class="footer_facebook"><span class="footer_span">facebook</span></a>
+            <a href="https://www.instagram.com" target="_blank" class="footer_instagram"><span class="footer_span">instagram</span></a>
           </div>
         </article>
       </div>
     </section>
     <section class="section detail_media_box">
+      <?php if ($event['media']['0']['media1'] != ''): ?>
+        <div class='detail_media_img_box detail_media_img_box_1 hidden'>
+          <?php foreach($event['media'] as $media): ?>
+            <picture>
+              <source type="image/webp"
+                    srcset="assets/img/database/<? echo $media['media1']; ?>.webp">
+              <img
+                src="assets/img/database/<? echo $media['media2']; ?>.jpg"
+                alt="<? echo $media['media1']; ?>">
+            </picture>
+          <? endforeach ?>
+        </div>
+      <? endif; ?>
         <?php if ($event['media']['0']['media2'] != ''): ?>
           <div class='detail_media_img_box'>
             <?php foreach($event['media'] as $media): ?>
@@ -168,12 +181,12 @@
 
 <section class="detail_button_box">
   <div class="fb-share-button home_footer_buttons center" data-href="http://student.howest.be/ruuben.lambrechts/20162017/ma3/dok/index.php?page=detail&amp;id=<?php echo $_GET['id'] ?>">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fstudent.howest.be%2Fruuben.lambrechts%2F20162017%2Fma3%2Fdok%2Findex.php%3Fpage%3Ddetail%26id%3D22&amp;src=sdkpreparse" target="_blank" data-mobile-iframe="true" class="genoeg_button fb-xfbml-parse-ignore">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fstudent.howest.be%2Fruuben.lambrechts%2F20162017%2Fma3%2Fdok%2Findex.php%3Fpage%3Ddetail%26id%3D<? echo $_GET['id'] ?>&amp;src=sdkpreparse" target="_blank" data-mobile-iframe="true" class="genoeg_button genoeg_1 fb-xfbml-parse-ignore">
       <header>
         <h1 class="genoeg_button_title detail_button">Vertel je Facebook vrienden dat je aanwezig zal zijn</h1>
       </header>
     </a>
-    <a href="#" class="genoeg_button">
+    <a href="assets/event.ics" class="genoeg_button">
       <header>
         <h1 class="genoeg_button_title detail_button">Plan dit evenement rechtstreeks in je agenda</h1>
       </header>

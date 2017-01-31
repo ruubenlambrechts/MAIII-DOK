@@ -1,4 +1,4 @@
-<section class="section event_home_box">
+<section class="section event_home_box first_section">
   <header class="title_box">
     <h1 class="title">De eerst volgende evenementen</h1>
   </header>

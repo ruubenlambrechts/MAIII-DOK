@@ -18,7 +18,7 @@
     </script>
     <meta charset="utf-8">
     <meta name="author" content="Ruuben Lambrechts">
-    <meta name="description" content="DOK is de zomerbar gelegen in Gent met een hoekje af, geniet van verschillende activiteiten op het terein">
+    <meta name="description" content="DOK is de zomerbar gelegen in Gent met een hoekje af, geniet van verschillende activiteiten op het terein.">
     <meta name="keywords" content="DOK, Gent, Zomerbar, dj, kantine, oude, dokken, devine, rommelmarkt, taart, koffie, gebak, zondag">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>DOK</title>
@@ -37,13 +37,13 @@
       </div>
     </nav>
     <nav class="nav_hamburger">
-      <a href="#" class="nav_hamburger_link"><img src="assets/img/hamburger.svg" alt="hamburger menu"></a>
+      <a class="nav_hamburger_link"><img src="assets/img/hamburger.svg" alt="hamburger menu"></a>
         <div class="nav_hamburger_menu hidden">
-            <a href="index.php?page=agenda" class="nav_link nav_hamburger_agenda">Agenda</a>
-            <a href="index.php?page=404" class="nav_link nav_hamburger_info">Info</a>
-            <a href="index.php?page=404" class="nav_link nav_hamburger_activiteiten">Activiteiten</a>
-            <a href="index.php?page=404" class="nav_link nav_hamburger_praktisch">Praktisch</a>
-            <a href="index.php?page=404" class="nav_link nav_hamburger_blogs">Blogs</a>
+            <a href="index.php?page=agenda" class="nav_link nav_hamburger_agenda hidden">Agenda</a>
+            <a href="index.php?page=404" class="nav_link nav_hamburger_info hidden">Info</a>
+            <a href="index.php?page=404" class="nav_link nav_hamburger_activiteiten hidden">Activiteiten</a>
+            <a href="index.php?page=404" class="nav_link nav_hamburger_praktisch hidden">Praktisch</a>
+            <a href="index.php?page=404" class="nav_link nav_hamburger_blogs hidden">Blogs</a>
         </div>
     </nav>
     <h1 class="center header_title">Werfplek voor verpozing en creatieve manoeuvres</h1>

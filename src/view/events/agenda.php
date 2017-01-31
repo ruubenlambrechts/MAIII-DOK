@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section first_section">
   <header class="title_box">
     <a href="#" class="filter_button"><h1 class="agenda_filter title">Filter +</h1></a>
   </header>
@@ -93,14 +93,18 @@
             ?></p>
         </div>
         <div class="event_extra">
-          <p class="event_location"><?php
+          <div class="event_locations_box">
+            <?php
               foreach($event['locations'] as $location):
-                echo $location['name'] . " ";
-            endforeach?></p>
-          <?php
+                echo '<p class="event_location">' . $location['name'];
+              endforeach?></p>
+          </div>
+          <div class="event_tags_box">
+            <?php
               foreach($event['tags'] as $tag):
                 echo '<p class="event_tag">' . $tag['tag'];
-            endforeach?></p>
+              endforeach?></p>
+          </div>
         </div>
       </a>
     <? endforeach;?>
