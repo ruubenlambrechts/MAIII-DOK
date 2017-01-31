@@ -1118,17 +1118,20 @@ input[type='submit']:focus {
     width: 70vw;
   }
 
-  .zondag_text_box {
-    position: relative;
-    width: 70vw;
-  }
+  .zondag {
 
-  .zondag_text_img {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    filter: opacity(.25) grayscale(1);
+    &_text_box {
+      position: relative;
+      width: 70vw;
+    }
+
+    &_text_img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      filter: opacity(.25) grayscale(1);
+    }
   }
 }
 
@@ -1165,12 +1168,15 @@ input[type='submit']:focus {
 
 @media (width <= 1100px) {
 
-  .genoeg_button {
-    width: 60vw;
-  }
+  .genoeg {
 
-  .genoeg_1 {
-    margin-bottom: 2rem;
+    &_button {
+      width: 60vw;
+    }
+
+    &_1 {
+      margin-bottom: 2rem;
+    }
   }
 
   .event_container::before, .event_container::after {
@@ -1197,21 +1203,21 @@ input[type='submit']:focus {
     width: 100vw;
   }
 
-  .nav_blogs {
-    display: none;
-  }
-
   .nav {
     width: 85vw;
     margin-left: 2rem;
-  }
 
-  .nav_hamburger {
-    display: flex;
-  }
+    &_blogs {
+      display: none;
+    }
 
-  .nav_hamburger_blogs {
-    display: block;
+    &_hamburger {
+      display: flex;
+    }
+
+    &_hamburger_blogs {
+      display: block;
+    }
   }
 }
 
@@ -1230,12 +1236,15 @@ input[type='submit']:focus {
     width: 60%;
   }
 
-  .error_box {
-    width: 90vw;
-  }
+  .error {
 
-  .error_gif_result {
-    width: 80vw;
+    &_box {
+      width: 90vw;
+    }
+
+    &_gif_result {
+      width: 80vw;
+    }
   }
 }
 
@@ -1249,12 +1258,15 @@ input[type='submit']:focus {
     flex-wrap: wrap;
   }
 
-  .detail_media_box {
-    background: var(--salmon);
-  }
+  .detail {
 
-  .detail_media_img_box {
-    margin-bottom: 2rem;
+    &_media_box {
+      background: var(--salmon);
+    }
+
+    &_media_img_box {
+      margin-bottom: 2rem;
+    }
   }
 }
 
@@ -1264,37 +1276,43 @@ input[type='submit']:focus {
     width: 100vw;
   }
 
-  .nav_praktisch {
-    display: none;
-  }
+  .nav {
 
-  .nav_hamburger_praktisch {
-    display: block;
+    &_praktisch {
+      display: none;
+    }
+
+    &_hamburger_praktisch {
+      display: block;
+    }
   }
 
   .sponsor {
     padding: 0 .5rem;
   }
 
-  .detail_flex picture {
-    display: none;
-  }
+  .detail {
 
-  .detail_media_img_box_1 {
-    display: block;
-  }
+    &_flex picture {
+      display: none;
+    }
 
-  .detail_top_time {
-    width: 30%;
-    margin-left: 0;
-  }
+    &_media_img_box_1 {
+      display: block;
+    }
 
-  .detail_description {
-    text-align: center;
-    height: 27rem;
-    overflow-y: scroll;
-    margin-bottom: 4rem;
-    border-bottom: .3rem solid var(--salmon);
+    &_top_time {
+      width: 30%;
+      margin-left: 0;
+    }
+
+    &_description {
+      text-align: center;
+      height: 27rem;
+      overflow-y: scroll;
+      margin-bottom: 4rem;
+      border-bottom: .3rem solid var(--salmon);
+    }
   }
 }
 
@@ -1307,31 +1325,37 @@ input[type='submit']:focus {
 
 @media (width <= 757px) {
 
-  .agenda_months {
-    background: var(--salmon);
-  }
+  .agenda {
 
-  .agenda_form_months_box, .agenda_form_tags_box {
-    width: 100vw;
-  }
+    &_months {
+      background: var(--salmon);
+    }
 
-  .agenda_form_months_box input, .agenda_form_months_box a {
-    margin-bottom: 2rem;
+    &_form_months_box, &_form_tags_box {
+      width: 100vw;
+    }
+
+    &_form_months_box input, &_form_months_box a {
+      margin-bottom: 2rem;
+    }
   }
 }
 
 @media (width <= 720px) {
 
-  .zondag_box {
-    flex-direction: column;
-  }
+  .zondag {
 
-  .zondag_taart_box::before, .zondag_dj_box::before, .zondag_dj_box::after, .zondag_markt_box::before {
-    display: none;
-  }
+    &_box {
+      flex-direction: column;
+    }
 
-  .zondag_taart_box, .zondag_dj_box {
-    margin-bottom: 4rem;
+    &_taart_box::before, &_dj_box::before, &_dj_box::after, &_markt_box::before {
+      display: none;
+    }
+
+    &_taart_box, &_dj_box {
+      margin-bottom: 4rem;
+    }
   }
 
   .genoeg_button, .home_footer, .home_footer_buttons {
@@ -1355,18 +1379,18 @@ input[type='submit']:focus {
 
   .nav {
     width: 75vw;
-  }
 
-  .nav_activiteiten {
-    display: none;
-  }
+    &_activiteiten {
+      display: none;
+    }
 
-  .nav_hamburger_activiteiten {
-    display: block;
-  }
+    &_hamburger_activiteiten {
+      display: block;
+    }
 
-  .nav_link_box {
-    width: 40%;
+    &_link_box {
+      width: 40%;
+    }
   }
 
   .detail_top_time {
@@ -1391,82 +1415,88 @@ input[type='submit']:focus {
   .nav {
     flex-direction: column;
     margin-left: 3.5rem;
-  }
 
-  .nav_link_box {
-    justify-content: space-between;
-    width: 75vw;
-  }
+    &_link_box {
+      justify-content: space-between;
+      width: 75vw;
+    }
 
-  .nav_logo {
-    margin-bottom: 3rem;
+    &_logo {
+      margin-bottom: 3rem;
+    }
+
+    &_hamburger_menu {
+      width: 100vw;
+      position: absolute;
+      top: 4.5rem;
+      right: -45px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 1.5rem 0;
+    }
+
+    &_hamburger {
+      top: 13.5rem;
+      right: 4.5rem;
+    }
+
+    &_info {
+      display: none;
+    }
+
+    &_hamburger_info {
+      display: block;
+    }
   }
 
   .header {
     height: 19rem;
   }
 
-  .nav_hamburger_menu {
-    width: 100vw;
-    position: absolute;
-    top: 4.5rem;
-    right: -45px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 1.5rem 0;
+  .detail {
+
+    &_top_time {
+      width: 30%;
+    }
+
+    &_top_tags {
+      margin-left: -2rem;
+    }
+
+    &_info {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      height: 5rem;
+    }
+
+    &_info::before {
+      display: none;
+    }
+
+    &_header {
+      width: 100%;
+    }
+
+    &_date {
+      width: 25vw;
+    }
   }
 
-  .nav_hamburger {
-    top: 13.5rem;
-    right: 4.5rem;
-  }
+  .error {
 
-  .nav_info {
-    display: none;
-  }
+    &_404 {
+      font-size: 20vw;
+    }
 
-  .nav_hamburger_info {
-    display: block;
-  }
+    &_text {
+      font-size: 5vw;
+    }
 
-  .detail_top_time {
-    width: 30%;
-  }
-
-  .detail_top_tags {
-    margin-left: -2rem;
-  }
-
-  .detail_info {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    height: 5rem;
-  }
-
-  .detail_info::before {
-    display: none;
-  }
-
-  .detail_header {
-    width: 100%;
-  }
-
-  .detail_date {
-    width: 25vw;
-  }
-
-  .error_404 {
-    font-size: 20vw;
-  }
-
-  .error_text {
-    font-size: 5vw;
-  }
-
-  .error_gif_result {
-    width: 100vw;
+    &_gif_result {
+      width: 100vw;
+    }
   }
 }
 
@@ -1486,12 +1516,15 @@ input[type='submit']:focus {
 
 @media (width <= 480px) {
 
-  .newsletter_input_box input[type='email'], .newsletter_input_box input[type='submit'] {
-    width: 100vw;
-  }
+  .newsletter {
 
-  .newsletter_input_box {
-    flex-direction: column;
+    &_input_box input[type='email'], &_input_box input[type='submit'] {
+      width: 100vw;
+    }
+
+    &_input_box {
+      flex-direction: column;
+    }
   }
 
   .zondag_text_img {
@@ -1511,61 +1544,74 @@ input[type='submit']:focus {
     margin-top: 19rem;
   }
 
-  .detail_media_img_box {
-    height: auto;
-  }
+  .detail {
 
-  .detail_media_img_box img {
-    width: 100%;
-    height: auto;
-  }
+    &_media_img_box {
+      height: auto;
+    }
 
-  .detail_next_recommended_box, .detail_next_box, .event_box {
-    width: 100vw;
-    padding: 0;
-  }
+    &_media_img_box img {
+      width: 100%;
+      height: auto;
+    }
 
-  .detail_next_box .title_box {
-    padding-top: 2rem;
-  }
+    &_next_recommended_box, &_next_box, .event_box {
+      width: 100vw;
+      padding: 0;
+    }
 
-  .detail_date {
-    width: 30vw;
+    &_next_box .title_box {
+      padding-top: 2rem;
+    }
+
+    &_date {
+      width: 30vw;
+    }
   }
 
 }
 
 @media (width <= 400px) {
 
-  .event_box img {
-    width: 130%;
-    left: -2.5rem;
+  .event_box {
+    width: 100vw;
+
+    & img {
+      width: 130%;
+      left: -2.5rem;
+    }
   }
 
-  .error_box {
-    flex-direction: column;
-  }
+  .error {
 
-  .error_text {
-    margin-bottom: 3rem;
-    font-size: 2rem;
-    width: 70vw;
-    text-align: center;
-  }
+    &_box {
+      flex-direction: column;
+    }
 
-  .error_404 {
-    font-size: 10rem;
+    &_text {
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      width: 70vw;
+      text-align: center;
+    }
+
+    &_404 {
+      font-size: 10rem;
+    }
   }
 }
 
 @media (width <= 330px) {
 
-  .zondag_img_box {
-    transform: scale(.9);
-  }
+  .zondag {
 
-  .zondag_taart_box, .zondag_dj_box {
-    margin-bottom: 2rem;
+    &_img_box {
+      transform: scale(.9);
+    }
+
+    &_taart_box, .zondag_dj_box {
+      margin-bottom: 2rem;
+    }
   }
 
   .agenda_reset_tags {
@@ -1575,11 +1621,14 @@ input[type='submit']:focus {
 
 @media (width <= 322px) {
 
-  .event_extra {
-    align-items: center;
-  }
+  .event {
 
-  .event_location {
-    line-height: 1.5rem;
+    &_extra {
+      align-items: center;
+    }
+
+    &_location {
+      line-height: 1.5rem;
+    }
   }
 }
